@@ -35,12 +35,12 @@ pid_t pid = fork();
  else if(pid == 0) {
     close(fd[1]); 
             read(fd[0], message, 20);
-            printf("Child process %d with PID %d received message: %s", i+1, getpid(), message);
+            printf("Child process %d with PPID %d received message: %s", i+1, getpid(), message);
             exit(0);
  }
  else {
  printf("\n");
- printf("Parent process with PID %d created child process %d with PID %d\n", getpid(), i+1, pid);
+ printf("Parent process with PID %d created child process %d with PPID %d\n", getpid(), i+1, pid);
             close(fd[0]); // close unused read end of the pipe
             write(fd[1], message, 20);
   printf("Waiting for child processes %d to finish...", i+1);
